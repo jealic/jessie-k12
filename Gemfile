@@ -52,3 +52,19 @@ end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+
+# 常用
+gem 'devise'
+gem 'ffaker'
+gem 'carrierwave'
+gem 'bootstrap', '~> 4.1.3'
+gem 'jquery-rails'
+gem 'font-awesome-rails'
+gem 'kaminari'
+gem 'bootstrap4-kaminari-views'
+# 專案需求
+gem 'rest-client'
+gem 'ransack'
+# 日曆功能
+gem 'simple_calendar', '~> 2.0'
+gem 'trix'
