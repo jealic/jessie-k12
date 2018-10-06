@@ -46,7 +46,7 @@
   <%= link_to '<< 返回教案總覽', user_plans_path(@user) %>
   <hr class="orange-hr">
    
-  <%= form_for [@user,@plan,@teachingfile], html:{multipart:true} do |f| %>
+  <%= form_for [@user,@plan,@teachingfile], html:{multipart: true} do |f| %>
     <div class="form-group">
       <%= f.label :name, '檔案名稱' %>
       <%= f.text_field :name, class: 'form-control', placeholder: "自訂" %>
@@ -57,7 +57,7 @@
       <%= f.file_field :attachments, multiple: true %>
     </div>
 
-    <%= f.submit "上傳", class:"btn btn-primary" %>
+    <%= f.submit "上傳", class: "btn btn-primary" %>
 
   <% end %>
 
@@ -68,11 +68,14 @@
     <tr>
       <td style="padding-right:20px;"><%= teachingfile.name %></td>
       <td style="padding-right:20px;">
-        <%= link_to teachingfile.attachment_url do%>
-          <%= teachingfile.attachment.file.filename %>
-          <%= fa_icon 'download 2x', class: 'theme-font' %>
+        <% teachingfile.attachments.each do |file| %>
+          <%= link_to file.url do %>
+            <%= file.file.filename %>
+            <%= fa_icon 'download 2x', class: 'theme-font' %><br>
+          <% end %>
         <% end %>
       </td>
+
       <td style="padding-right:20px;"><%= link_to '編輯',edit_user_plan_teachingfile_path(@user, @plan,teachingfile) %></td>
       <td style="padding-right:20px;"> <%= link_to '刪除', user_plan_teachingfile_path(@user, @plan,teachingfile), method: :delete, data: { confirm: "確定要刪除這個檔案嗎？"} %></td>
       

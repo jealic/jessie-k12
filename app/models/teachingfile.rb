@@ -6,4 +6,5 @@ class Teachingfile < ApplicationRecord
   belongs_to :material, optional: true
 
   mount_uploaders :attachments, AttachmentUploader
+  serialize :attachments, JSON
 end
