@@ -1,0 +1,2 @@
+class TopicFile < ApplicationRecord
+end
