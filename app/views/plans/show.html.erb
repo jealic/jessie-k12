@@ -74,7 +74,7 @@
             <%= fa_icon 'download 2x', class: 'theme-font' %>
             <%= file.file.filename %>
           <% end %>
-          <%= link_to user_plan_teachingfile_attachment_path(@user, @plan, teachingfile, index), :method => :delete, data: { confirm: "Are you sure you want to delete this image?" } do %>
+          <%= link_to user_plan_teachingfile_attachment_path(@user, @plan, teachingfile, index), :method => :delete, data: { confirm: "要刪除《#{file.file.filename}》檔案嗎？" } do %>
             <%= fa_icon 'trash', style: 'color: red;'%>
           <% end %>
         </div>
@@ -82,7 +82,7 @@
       </td>
 
       <td style="padding-right:20px;"><%= link_to '編輯',edit_user_plan_teachingfile_path(@user, @plan,teachingfile) %></td>
-      <td style="padding-right:20px;"> <%= link_to '刪除', user_plan_teachingfile_path(@user, @plan,teachingfile), method: :delete, data: { confirm: "確定要刪除這個檔案嗎？"} %></td>
+      <td style="padding-right:20px;"> <%= link_to '全部刪除', user_plan_teachingfile_path(@user, @plan,teachingfile), method: :delete, data: { confirm: "確定要刪掉 《#{teachingfile.name}》的全部附件?" } %></td>
       
     </tr>
     <% end %>

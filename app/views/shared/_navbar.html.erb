@@ -15,8 +15,8 @@
           </div>
         </li>
 
-        <li><%= link_to '教材資料夾' %></li>
-        <li><%= link_to '教案資料夾' %></li>
+        <li><%= link_to '教材資料夾', user_materials_path(current_user) %></li>
+        <li><%= link_to '教案資料夾', user_plans_path(current_user) %></li>
 
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -25,7 +25,7 @@
             <% else %>
               <%= image_tag 'avatar-default.png', width: '30', height: '30' %>  
             <% end %>
-            <%= current_user.email.split('@').first %>
+            <%= current_user.name %>
             
           </a>
           <div class="dropdown-menu dropdown-menu-right text-center" aria-labelledby="navbarDropdown">
