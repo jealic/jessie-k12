@@ -7,7 +7,7 @@
   <% if user_signed_in? %>
     <% if current_user %>
       <ul class="nav">
-        <li><%= link_to '課表首頁' %></li>
+        <li><%= link_to '課表首頁', user_lessons_path(current_user) %></li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown2" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">我的班級</a>
           <div class="dropdown-menu dropdown-menu-right text-center" aria-labelledby="navbarDropdown2">
