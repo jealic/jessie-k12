@@ -74,7 +74,7 @@
             <%= fa_icon 'download 2x', class: 'theme-font' %>
             <%= file.file.filename %>
           <% end %>
-          <%= link_to user_plan_attachment_path(@teachingfile, index), :method => :delete, data: { confirm: "Are you sure you want to delete this image?" } do %>
+          <%= link_to user_plan_teachingfile_attachment_path(@user, @plan, teachingfile, index), :method => :delete, data: { confirm: "Are you sure you want to delete this image?" } do %>
             <%= fa_icon 'trash', style: 'color: red;'%>
           <% end %>
         </div>

@@ -16,9 +16,7 @@ Rails.application.routes.draw do
 
     resources :materials do
       resources :teachingfiles do
-        collection do
-          resources :attachments, only: :destroy
-        end
+        resources :attachments, only: :destroy
       end
     end
 
