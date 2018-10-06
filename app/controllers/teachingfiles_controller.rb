@@ -103,6 +103,7 @@ class TeachingfilesController < ApplicationController
       flash[:alert] = "檔案刪除失敗"
       redirect_back fallback_location: root_path
     end
+
   end
 
   private

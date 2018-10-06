@@ -9,11 +9,17 @@ Rails.application.routes.draw do
     resources :todos
 
     resources :plans do
-      resources :teachingfiles
+      resources :teachingfiles do
+        resources :attachments, only: :destroy
+      end
     end
 
     resources :materials do
-      resources :teachingfiles
+      resources :teachingfiles do
+        collection do
+          resources :attachments, only: :destroy
+        end
+      end
     end
 
     resources :lessons do
