@@ -9,4 +9,5 @@ class User < ApplicationRecord
   has_many :materials, dependent: :destroy
   has_many :plans, dependent: :destroy
 
+  validates_presence_of :name
 end
