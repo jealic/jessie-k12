@@ -20,3 +20,106 @@
 .daily-todo {
   padding-left: 50px;
 }
+
+/******** index month-calendar **********/
+.mon-calendar-box {
+  width:270px; 
+  background:#fff; 
+  border-radius:5px; 
+  overflow:hidden; 
+  display:block; 
+  margin-bottom:10px; 
+  box-shadow:0 0 10px #201d1c; 
+  margin:0 auto; 
+  margin-top:100px;
+  color: #000;
+}
+
+.mon-calendar-body {
+  padding:0 10px 10px 10px; 
+  box-sizing:border-box!important;
+  background: #527a7a;
+  opacity: 0.9;
+}
+
+.mon-calendar-nav {
+  font:18px 'Roboto'; 
+  font-weight:700; 
+  color:#f7f3eb; 
+  display:block; 
+  margin:10px 0 10px 0; 
+  text-transform:uppercase; 
+  text-align:center; 
+  letter-spacing:1px;
+}
+
+.mon-calendar-body span {
+  font:11px ,'Roboto'; 
+  font-weight:400; 
+  color:#f7f3eb; 
+  text-align:center; 
+  width:35px; 
+  height:42px; 
+  display:inline-block; 
+  float:left; 
+  overflow:hidden; 
+  line-height:40px;
+}
+
+.today {
+  background: #b38f00;
+}
+
+.prev-month {
+  opacity: 0.3;
+}
+.next-month {
+  opacity: 0.3;
+}
+
+/******** index to-do-list **********/
+.to_do_head{
+  margin-top: 15px;
+  text-align: center;
+}
+
+.to_do_body .day_time{
+  border:1px solid #ddd !important;
+  border-radius: 10px;
+  padding: 10px;
+  margin-top: 5px;
+  background-color: #aaaaaa;
+}
+
+.to_do_body .today .day_time {
+  background-color: #ffffc0;
+}
+
+.time_box .day_time {
+  border-radius: 8px !important;
+  background-color: #aaaaaa
+}
+
+.todo_content {
+  padding-left: 15px;
+}
+
+#lessons_calendar_2 {
+  margin-bottom: 50px;
+}
+
+/***** lessons/index/time_table *******/
+/*課表格子高度*/
+.time_table .day_time {
+  min-height: 80px !important;
+}
+
+/*課堂時間垂直置中*/
+.day_time .day_hour {
+  line-height: 58px;
+}
+
+/*井字號垂直置中*/
+.th_head {
+  line-height: 50px;
+}
