@@ -4,4 +4,6 @@ class Teachingfile < ApplicationRecord
 
   belongs_to :plan, optional: true
   belongs_to :material, optional: true
+
+  mount_uploaders :attachments, AttachmentUploader
 end
