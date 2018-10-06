@@ -5,7 +5,11 @@ class PlansController < ApplicationController
     @user = current_user
     @plans = @user.plans.order(created_at: :desc)
     @subject_tags = SubjectTag.all
-    @plan = @user.plans.new
+    if params[:id]
+      @plan = @user.plans.find(params[:id])
+    else
+      @plan = @user.plans.new
+    end
   end 
 
   def create

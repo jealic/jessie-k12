@@ -16,8 +16,14 @@
             <div class="folder-block">
               <%= link_to user_material_path(@user,material) do %>     
                 <%= fa_icon 'folder-open 4x', style: 'color:skyblue;' %>
-                <p><%= material.m_name %></p>
-                
+                <p>
+                  <%= material.m_name %>
+                  <span>
+                    <%= link_to user_materials_path(id: material.id) do %>
+                      <%= fa_icon 'edit' %>
+                    <% end %>
+                  </span>
+                </p>    
               <% end %>
             </div>
             <% end %>
@@ -37,11 +43,16 @@
           </div>
           <div class="form-group">
           <%= f.label :m_name, "教學主題／單元" %>
-          <%= f.text_field :m_name ,class: "form-control"%>
+          <%= f.text_field :m_name, class: "form-control"%>
           </div>
 
           <div class="form-group">
-            <%= f.submit '新增', class: 'btn btn-info' %>
+            <% if @material.m_name.present? %>
+              <%= f.submit '編輯', class: 'btn btn-outline-info' %>
+              <%= link_to '取消', user_materials_path(@user), class: 'btn btn-outline-danger' %>
+            <% else %>
+              <%= f.submit '新增', class: 'btn btn-info' %>
+            <% end %> 
           </div>
         <% end %>
       </div>

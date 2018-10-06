@@ -5,7 +5,11 @@ class MaterialsController < ApplicationController
     @user = current_user
     @materials = @user.materials.order(created_at: :desc)
     @subject_tags = SubjectTag.all
-    @material = @user.materials.new
+    if params[:id]
+      @material = @user.materials.find(params[:id])
+    else
+      @material = @user.materials.new
+    end
   end
 
   def show

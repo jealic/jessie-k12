@@ -16,8 +16,14 @@
             <div class="folder-block">
               <%= link_to user_plan_path(@user,plan) do %>     
                 <%= fa_icon 'folder-open 4x', style: 'color:skyblue;' %>
-                <p><%= plan.p_name %></p>
-                
+                <p>
+                  <%= plan.p_name %>
+                  <span>
+                    <%= link_to user_plans_path(id: plan.id) do %>
+                      <%= fa_icon 'edit' %>
+                    <% end %>
+                  </span>
+                </p>
               <% end %>
             </div>
             <% end %>
@@ -37,11 +43,16 @@
           </div>
           <div class="form-group">
           <%= f.label :p_name, "教學主題／單元" %>
-          <%= f.text_field :p_name ,class: "form-control"%>
+          <%= f.text_field :p_name, class: "form-control"%>
           </div>
 
           <div class="form-group">
-            <%= f.submit '新增', class: 'btn btn-info' %>
+            <% if @plan.p_name.present? %>
+              <%= f.submit '編輯', class: 'btn btn-outline-info' %>
+              <%= link_to '取消', user_plans_path(@user), class: 'btn btn-outline-danger' %>
+            <% else %>
+              <%= f.submit '新增', class: 'btn btn-info' %>
+            <% end %> 
           </div>
         <% end %>
       </div>
