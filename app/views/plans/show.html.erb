@@ -81,7 +81,7 @@
         <% end %>
       </td>
 
-      <td style="padding-right:20px;"><%= link_to '編輯',edit_user_plan_teachingfile_path(@user, @plan,teachingfile) %></td>
+      <td style="padding-right:20px;"><%= link_to '重新上傳',edit_user_plan_teachingfile_path(@user, @plan,teachingfile) %></td>
       <td style="padding-right:20px;"> <%= link_to '全部刪除', user_plan_teachingfile_path(@user, @plan,teachingfile), method: :delete, data: { confirm: "確定要刪掉 《#{teachingfile.name}》的全部附件?" } %></td>
       
     </tr>
