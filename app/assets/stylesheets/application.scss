@@ -1,0 +1,76 @@
+/*
+ *= require trix
+ */
+
+@import "bootstrap";
+@import "font-awesome";
+@import "style";
+@import "simple_calendar";
+
+body {
+  color: #5e5f5f;
+}
+
+.theme-color {
+  color:#fff;
+  background-color:#5e5f5f;
+}
+
+.theme-font {
+  color: #5e5f5f!important;
+}
+
+.blue-hr {
+  height:10px;
+  border:none;
+  border-top:10px groove skyblue;
+}
+
+.red-hr {
+  height: 10px;
+  border: none;
+  border-top:10px groove #e86dd4;
+}
+
+.orange-hr {
+  height: 10px;
+  border: none;
+  border-top: 10px groove orange;
+}
+
+.yellow-hr {
+  height: 10px;
+  border: none;
+  border-top: 10px groove yellow;
+}
+
+.main-frame {
+  padding-top: 25px;
+}
+
+.alert {
+  position: absolute;
+  margin-top: 1.5rem;
+  margin-left: 65%;
+  z-index: 99;
+}
+
+/******* New Navbar Setting ********/
+
+.nav {
+  float: right;
+}
+
+.nav li {
+  display: inline-block;
+}
+
+.nav li a {
+  color: #000;
+  font-weight: bold;
+  text-transform: capitalize;
+  display: block;
+  padding: 10px 12px;
+}
+
+/*********************************/
