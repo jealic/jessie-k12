@@ -1,6 +1,6 @@
 <div class="container">
   <div class="">
-    <!-- Button trigger modal -->
+
     <button type="button" class="btn btn-outline-primary btn-sm" data-toggle="modal" data-target="#exampleModal">
       資料夾設定
     </button>
@@ -16,15 +16,15 @@
             </button>
           </div>
           <div class="modal-body">
-            <%= form_for [@user,@material] do |f| %>
+            <%= form_for [@user,@plan] do |f| %>
               <div class="form-group">
               <%= f.label :subject_tag_id, "科目" %>
               <%= f.collection_select :subject_tag_id , SubjectTag.all, :id, :name, {prompt: true}, {class: "form-control"} %>
               </div> 
 
               <div class="form-group">
-              <%= f.label :m_name, "教學主題／單元" %>
-              <%= f.text_field :m_name ,class:"form-control"%>
+              <%= f.label :p_name, "教學主題／單元" %>
+              <%= f.text_field :p_name ,class: "form-control"%>
               </div>
 
               <div class="form-group pull-right">
@@ -37,52 +37,47 @@
       </div>
     </div>
 
-    <%= link_to '刪除資料夾', user_material_path(@material.user,@material), class: 'btn btn-danger btn-sm pull-right', method: :delete, data: {confirm: "資料夾裡的檔案也會一併刪除，你確定嗎？"} %>
+    <%= link_to '刪除資料夾', user_plan_path(@plan.user,@plan), class: 'btn btn-danger btn-sm pull-right', method: :delete, data: {confirm: "資料夾裡的檔案也會一併刪除，你確定嗎？"} %>
   </div>
 
   <br>
-  <h4 style="color:#9d586a">教材科目：<%= @material.subject_tag.name %></h4>
-  <h4 style="color:#9d586a">教學主題／單元：<%= @material.m_name %></h4>
-  <%= link_to '<< 返回教材總覽', user_materials_path %>
-  <hr class="blue-hr">
- 
-  <%= form_for [@material.user,@material,@teachingfile], html:{multipart:true} do |f| %>
+  <h4 style="color:#55a578">教案科目：<%= @plan.subject_tag.name %></h4>
+  <h4 style="color:#55a578">教學主題／單元：<%= @plan.p_name %></h4> 
+  <%= link_to '<< 返回教案總覽', user_plans_path(@user) %>
+  <hr class="orange-hr">
+   
+  <%= form_for [@user,@plan,@teachingfile], html:{multipart:true} do |f| %>
     <div class="form-group">
       <%= f.label :name, '檔案名稱' %>
       <%= f.text_field :name, class: 'form-control', placeholder: "自訂" %>
     </div>
 
     <div class="form-group">
-      <%= f.label :attachments, '上傳附件' %>
+      <%= f.label :attachments,'上傳附件' %>
       <%= f.file_field :attachments, multiple: true %>
     </div>
-    
-    <div class="form-group">
-      <%= f.submit "上傳", class: "btn btn-primary" %>
-    </div>
+
+    <%= f.submit "上傳", class:"btn btn-primary" %>
 
   <% end %>
-  
-  <br>
 
+  <br>
   <table class="table table-hover">
-    <h3 style="color:#894355">上傳檔案列表</h3>
-    <% @material.teachingfiles.each do |teachingfile| %>
+    <h3 style="color:#45785b">上傳檔案列表</h3>
+    <% @plan.teachingfiles.each do |teachingfile| %>
     <tr>
       <td style="padding-right:20px;"><%= teachingfile.name %></td>
       <td style="padding-right:20px;">
         <%= link_to teachingfile.attachment_url do%>
-          <%= teachingfile.attachment.file.filename  %>
+          <%= teachingfile.attachment.file.filename %>
           <%= fa_icon 'download 2x', class: 'theme-font' %>
         <% end %>
       </td>
-
-      <td style="padding-right:20px;"><%= link_to '編輯',edit_user_material_teachingfile_path(@user, @material, teachingfile) %></td>
-      <td style="padding-right:20px;"> <%= link_to '刪除', user_material_teachingfile_path(@user,@material,teachingfile), method: :delete, data: { confirm: "Are you sure to delete ?"} %></td>
+      <td style="padding-right:20px;"><%= link_to '編輯',edit_user_plan_teachingfile_path(@user, @plan,teachingfile) %></td>
+      <td style="padding-right:20px;"> <%= link_to '刪除', user_plan_teachingfile_path(@user, @plan,teachingfile), method: :delete, data: { confirm: "確定要刪除這個檔案嗎？"} %></td>
+      
     </tr>
     <% end %>
-  </table> 
+  </table>
 
-
-  
 </div>
