@@ -48,7 +48,7 @@
 
           <div class="form-group">
             <% if @plan.p_name.present? %>
-              <%= f.submit '編輯', class: 'btn btn-outline-info' %>
+              <%= f.submit '修改', class: 'btn btn-outline-info' %>
               <%= link_to '取消', user_plans_path(@user), class: 'btn btn-outline-danger' %>
             <% else %>
               <%= f.submit '新增', class: 'btn btn-info' %>
