@@ -9,6 +9,14 @@
   </head>
 
   <body>
-    <%= yield %>
+    <%= render partial: "shared/navbar" %>
+    <div class="nav_margin"></div>
+    <div class="container-fluid">
+
+      <%= render partial: "shared/alert" %>
+
+      <%= yield %>
+
+    </div>
   </body>
 </html>
