@@ -3,7 +3,7 @@ class MaterialsController < ApplicationController
 
   def index 
     @user = current_user
-    @material = @user.materials.order(created_at: :desc)
+    @materials = @user.materials.order(created_at: :desc)
     @material = @user.materials.new
   end
 
@@ -61,5 +61,5 @@ class MaterialsController < ApplicationController
   def set_material
     @material = Material.find_by(params[:material_id])
   end
-end
+
 end

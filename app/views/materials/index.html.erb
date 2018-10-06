@@ -1,0 +1,50 @@
+<div class="container">
+  <h1>
+    教材資料夾
+  </h1>
+  
+  <hr class="red-hr">
+  <div class="row">
+    <div class="col-md-8">
+      <% if @materials.count == 0 %>
+        <h4>你還沒有任何教材資料！</h4>
+      <% else %>  
+        <% @subject_tags.each do |subject| %>
+          <% if subject.materials.present? %>
+            <h4><i><%= subject.name %></i></h4>
+            <% subject.materials.each do |material| %>
+            <div class="folder-block">
+              <%= link_to user_material_path(@user,material) do %>     
+                <%= fa_icon 'folder-open 4x', style: 'color:skyblue;' %>
+                <p><%= material.m_name %></p>
+                
+              <% end %>
+            </div>
+            <% end %>
+          
+          <% end %>
+        <% end %>
+      <% end %>
+    </div>
+
+    <div class="col-md-4">
+      <h4>新增資料夾</h4><br>
+      <div class="">
+        <%= form_for [@user,@material] do |f| %>
+          <div class="form-group">
+          <%= f.label :subject_tag_id, "科目" %>
+          <%= f.collection_select :subject_tag_id , SubjectTag.all, :id, :name, {prompt: true}, {class: "form-control"}  %>
+          </div>
+          <div class="form-group">
+          <%= f.label :m_name, "教學主題／單元" %>
+          <%= f.text_field :m_name ,class: "form-control"%>
+          </div>
+
+          <div class="form-group">
+            <%= f.submit '新增', class: 'btn btn-info' %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
