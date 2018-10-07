@@ -9,7 +9,7 @@
   <div class="form-group">
     <%=f.label :class_name, "班級名稱" %>
     <br/>
-    <%=f.text_field :class_name, class: "form-control", placeholder: "ex. 1年1班" %>
+    <%=f.text_field :classroom, class: "form-control", placeholder: "ex. 1年1班" %>
   </div>
 
   <div class="form-group">
@@ -19,9 +19,15 @@
   </div>
 
   <div class="form-group">
-    <%=f.label :end_time, 'End Time' %>
+    <%=f.label :event_type, '課務類別' %>
     <br/>
-    <%=f.datetime_select :end_time %>
+    <%=f.select :event_type, ["lesson", "todo", "exam"], prompt: "Select One" %>
+  </div>
+
+  <div class="form-group">
+    <%=f.label :period, "每週循環" %>
+    <br/>
+    <%=f.select :period, Lesson::REPEATS,{} %>
   </div>
 
   <div class="actions">
