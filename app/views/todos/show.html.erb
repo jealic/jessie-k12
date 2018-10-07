@@ -2,7 +2,7 @@
 
 <p>
   <strong>Name:</strong>
-  <%= @todo.name %>
+  <%= @todo.name %> <span><%= link_to 'delete', user_todo_path, method: :delete, data: {confirm: "Are you sure?"} %></span>
 </p>
 
 <p>
@@ -15,5 +15,5 @@
   <%= @todo.end_time %>
 </p>
 
-<%= link_to 'Edit', edit_todo_path(@todo) %> |
-<%= link_to 'Back', todos_path %>
+<%= link_to 'Edit', edit_user_todo_path(@user, @todo) %> |
+<%= link_to 'Back', root_path %>

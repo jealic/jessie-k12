@@ -14,7 +14,6 @@ class TodosController < ApplicationController
 
   # GET /todos/new
   def new
-    @user = current_user
     @todo = @user.todos.new
   end
 
@@ -25,13 +24,12 @@ class TodosController < ApplicationController
   # POST /todos
   # POST /todos.json
   def create
-    @user = current_user
     @todo = @user.todos.new(todo_params)
 
     respond_to do |format|
       if @todo.save
         format.html { redirect_to root_path, notice: 'Todo was successfully created.' }
-        format.json { render :show, status: :created, location: @todo }
+        format.json { render :show, status: :created, location: root_path }
       else
         format.html { render :new }
         format.json { render json: @todo.errors, status: :unprocessable_entity }
@@ -44,8 +42,8 @@ class TodosController < ApplicationController
   def update
     respond_to do |format|
       if @todo.update(todo_params)
-        format.html { redirect_to @todo, notice: 'Todo was successfully updated.' }
-        format.json { render :show, status: :ok, location: @todo }
+        format.html { redirect_to user_todo_path(@user, @todo), notice: 'Todo was successfully updated.' }
+        format.json { render :show, status: :ok, location: user_todo_path(@user, @todo) }
       else
         format.html { render :edit }
         format.json { render json: @todo.errors, status: :unprocessable_entity }
@@ -58,7 +56,7 @@ class TodosController < ApplicationController
   def destroy
     @todo.destroy
     respond_to do |format|
-      format.html { redirect_to todos_url, notice: 'Todo was successfully destroyed.' }
+      format.html { redirect_to root_path, notice: 'Todo was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -66,7 +64,8 @@ class TodosController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_todo
-      @todo = Todo.find(params[:id])
+      @user = current_user
+      @todo = @user.todos.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
