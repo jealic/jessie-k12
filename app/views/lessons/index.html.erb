@@ -2,7 +2,7 @@
   <div class="row">
     <h1>Here is the lessons#index</h1>
     <div class="col-md-8">
-      <%= link_to '新增課表' %> | <%= link_to '新增待辦事項', new_user_todo_path(@user) %>
+      <%= link_to '新增課表', new_user_lesson_path(@user) %> | <%= link_to '新增待辦事項', new_user_todo_path(@user) %>
       <hr>
       <div class="time_table">
         <%= week_calendar events: @lessons do |date, lessons| %>
